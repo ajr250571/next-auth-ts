@@ -9,7 +9,7 @@ function LoginPage() {
           <h2 className="card-title">Iniciar Sesión</h2>
           <SigninForm />
           <div className="flex justify-between">
-            <p>No tienes una Cuenta?</p>
+            <p className="text-sm">No tienes Cuenta?</p>
             <Link className="link link-primary" href="/auth/register">
               Registrarse
             </Link>

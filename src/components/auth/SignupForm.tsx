@@ -1,7 +1,25 @@
+"use client";
+import { useForm, SubmitHandler } from "react-hook-form";
+
+type Inputs = {
+  email: string;
+  username: string;
+  password: string;
+  confirmPassword: string;
+};
+
 function SignupForm() {
+  const {
+    register,
+    handleSubmit,
+    watch,
+    formState: { errors },
+  } = useForm<Inputs>();
+  const onSubmit: SubmitHandler<Inputs> = (data) => console.log(data);
+
   return (
-    <div className="flex flex-col">
-      <label className="input input-bordered flex items-center gap-2 mb-2">
+    <form onSubmit={handleSubmit(onSubmit)} className="flex flex-col w-80">
+      <label className="input input-bordered input-sm flex items-center gap-2 mt-2">
         <svg
           xmlns="http://www.w3.org/2000/svg"
           viewBox="0 0 16 16"
@@ -11,9 +29,23 @@ function SignupForm() {
           <path d="M2.5 3A1.5 1.5 0 0 0 1 4.5v.793c.026.009.051.02.076.032L7.674 8.51c.206.1.446.1.652 0l6.598-3.185A.755.755 0 0 1 15 5.293V4.5A1.5 1.5 0 0 0 13.5 3h-11Z" />
           <path d="M15 6.954 8.978 9.86a2.25 2.25 0 0 1-1.956 0L1 6.954V11.5A1.5 1.5 0 0 0 2.5 13h11a1.5 1.5 0 0 0 1.5-1.5V6.954Z" />
         </svg>
-        <input type="text" className="grow" placeholder="Email" />
+        <input
+          type="email"
+          className="grow"
+          placeholder="email@dominio.com"
+          autoFocus
+          {...register("email", {
+            required: {
+              value: true,
+              message: "El Email es requerido.",
+            },
+          })}
+        />
       </label>
-      <label className="input input-bordered flex items-center gap-2 mb-2">
+      {errors.email && (
+        <span className="text-error text-xs mt-2">{errors.email.message}</span>
+      )}
+      <label className="input input-bordered input-sm flex items-center gap-2 mt-2">
         <svg
           xmlns="http://www.w3.org/2000/svg"
           viewBox="0 0 16 16"
@@ -22,9 +54,24 @@ function SignupForm() {
         >
           <path d="M8 8a3 3 0 1 0 0-6 3 3 0 0 0 0 6ZM12.735 14c.618 0 1.093-.561.872-1.139a6.002 6.002 0 0 0-11.215 0c-.22.578.254 1.139.872 1.139h9.47Z" />
         </svg>
-        <input type="text" className="grow" placeholder="Username" />
+        <input
+          type="text"
+          className="grow"
+          placeholder="Nombre Usuario"
+          {...register("username", {
+            required: {
+              value: true,
+              message: "El Username es requerido.",
+            },
+          })}
+        />
       </label>
-      <label className="input input-bordered flex items-center gap-2 mb-2">
+      {errors.username && (
+        <span className="text-error text-xs mt-2">
+          {errors.username.message}
+        </span>
+      )}
+      <label className="input input-bordered input-sm flex items-center gap-2 mt-2">
         <svg
           xmlns="http://www.w3.org/2000/svg"
           viewBox="0 0 16 16"
@@ -37,9 +84,24 @@ function SignupForm() {
             clipRule="evenodd"
           />
         </svg>
-        <input type="password" className="grow" placeholder="Password" />
+        <input
+          type="password"
+          className="grow"
+          placeholder="Contraseña"
+          {...register("password", {
+            required: {
+              value: true,
+              message: "La Contraseña es requerido.",
+            },
+          })}
+        />
       </label>
-      <label className="input input-bordered flex items-center gap-2 mb-2">
+      {errors.password && (
+        <span className="text-error text-xs mt-2">
+          {errors.password.message}
+        </span>
+      )}
+      <label className="input input-bordered input-sm flex items-center gap-2 mt-2">
         <svg
           xmlns="http://www.w3.org/2000/svg"
           viewBox="0 0 16 16"
@@ -52,10 +114,27 @@ function SignupForm() {
             clipRule="evenodd"
           />
         </svg>
-        <input type="password" className="grow" placeholder="Password" />
-      </label>
-      <button className="btn btn-primary">Registrarse</button>
-    </div>
+        <input
+          type="password"
+          className="grow"
+          placeholder="Confirmar Contraseña"
+          {...register("confirmPassword", {
+            required: {
+              value: true,
+              message: "Confirmar Contraseña es requerido.",
+            },
+          })}
+        />
+      </label>{" "}
+      {errors.confirmPassword && (
+        <span className="text-error text-xs mt-2">
+          {errors.confirmPassword.message}
+        </span>
+      )}
+      <button type="submit" className="btn btn-primary mt-4 btn-sm">
+        Registrarse
+      </button>
+    </form>
   );
 }
 

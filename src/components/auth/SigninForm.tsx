@@ -15,8 +15,8 @@ function SigninForm() {
   } = useForm<Inputs>();
   const onSubmit: SubmitHandler<Inputs> = (data) => console.log(data);
   return (
-    <form onSubmit={handleSubmit(onSubmit)} className="flex flex-col">
-      <label className="input input-bordered flex items-center gap-2 mt-4">
+    <form onSubmit={handleSubmit(onSubmit)} className="flex flex-col w-80">
+      <label className="input input-bordered input-sm flex items-center gap-2 mt-2">
         <svg
           xmlns="http://www.w3.org/2000/svg"
           viewBox="0 0 16 16"
@@ -29,7 +29,7 @@ function SigninForm() {
         <input
           type="email"
           className="grow"
-          placeholder="Email"
+          placeholder="email@dominio.com"
           autoFocus
           {...register("email", {
             required: {
@@ -40,10 +40,12 @@ function SigninForm() {
         />
       </label>
       {errors.email && (
-        <span className="text-error text-xs mt-2">{errors.email.message}</span>
+        <span className="text-error text-xs mt-2 font-bold">
+          {errors.email.message}
+        </span>
       )}
 
-      <label className="input input-bordered flex items-center gap-2 mt-4">
+      <label className="input input-bordered input-sm flex items-center gap-2 mt-2">
         <svg
           xmlns="http://www.w3.org/2000/svg"
           viewBox="0 0 16 16"
@@ -59,15 +61,15 @@ function SigninForm() {
         <input
           type="password"
           className="grow"
-          placeholder="Password"
+          placeholder="Contraseña"
           {...register("password", {
             required: {
               value: true,
-              message: "El Password es requerido.",
+              message: "La Contraseña es requerido.",
             },
             minLength: {
               value: 6,
-              message: "La Longitud minima es de 6 caracteres.",
+              message: "La Contraseña debe ser al menos de 6 caracteres.",
             },
           })}
         />
@@ -77,7 +79,7 @@ function SigninForm() {
           {errors.password.message}
         </span>
       )}
-      <button type="submit" className="btn btn-primary mt-4">
+      <button type="submit" className="btn btn-primary mt-4 btn-sm">
         Iniciar Sesión
       </button>
     </form>

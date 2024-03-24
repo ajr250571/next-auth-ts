@@ -9,7 +9,7 @@ function RegisterPage() {
           <h2 className="card-title">Registrarse</h2>
           <SignupForm />
           <div className="flex justify-between">
-            <p>Ya tienes una Cuenta?</p>
+            <p className="text-sm">Ya tienes Cuenta?</p>
             <Link className="link link-primary" href="/auth/login">
               Iniciar Sesión
             </Link>
