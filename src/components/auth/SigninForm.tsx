@@ -1,4 +1,6 @@
 "use client";
+import { signIn } from "next-auth/react";
+import { useRouter } from "next/navigation";
 import { useForm, SubmitHandler } from "react-hook-form";
 
 type Inputs = {
@@ -7,13 +9,25 @@ type Inputs = {
 };
 
 function SigninForm() {
+  const router = useRouter();
   const {
     register,
     handleSubmit,
     watch,
     formState: { errors },
   } = useForm<Inputs>();
-  const onSubmit: SubmitHandler<Inputs> = (data) => console.log(data);
+  const onSubmit: SubmitHandler<Inputs> = async (data) => {
+    console.log(data);
+    const res = await signIn("credentials", {
+      redirect: false,
+      email: data.email,
+      password: data.password,
+    });
+    if (!res?.ok) {
+      console.log(res);
+    }
+    router.push("/dashboard");
+  };
   return (
     <form onSubmit={handleSubmit(onSubmit)} className="flex flex-col w-80">
       <label className="input input-bordered input-sm flex items-center gap-2 mt-2">
