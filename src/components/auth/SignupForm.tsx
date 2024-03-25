@@ -1,4 +1,5 @@
 "use client";
+import axios from "axios";
 import { useForm, SubmitHandler } from "react-hook-form";
 
 type Inputs = {
@@ -15,7 +16,11 @@ function SignupForm() {
     watch,
     formState: { errors },
   } = useForm<Inputs>();
-  const onSubmit: SubmitHandler<Inputs> = (data) => console.log(data);
+  const onSubmit: SubmitHandler<Inputs> = async (data) => {
+    console.log(data);
+    const res = await axios.post("/api/auth/register", data);
+    console.log(res);
+  };
 
   return (
     <form onSubmit={handleSubmit(onSubmit)} className="flex flex-col w-80">
