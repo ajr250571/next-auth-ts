@@ -17,14 +17,14 @@ function SigninForm() {
     formState: { errors },
   } = useForm<Inputs>();
   const onSubmit: SubmitHandler<Inputs> = async (data) => {
-    console.log(data);
+    // console.log(data);
     const res = await signIn("credentials", {
       redirect: false,
       email: data.email,
       password: data.password,
     });
     if (!res?.ok) {
-      console.log(res);
+      // console.log(res);
     }
     router.push("/dashboard");
   };

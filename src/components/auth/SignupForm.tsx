@@ -20,9 +20,13 @@ function SignupForm() {
     formState: { errors },
   } = useForm<Inputs>();
   const onSubmit: SubmitHandler<Inputs> = async (data) => {
-    console.log(data);
+    // console.log(data);
+    if (data.password !== data.confirmPassword) {
+      return alert("Password no esta confirmado correctamente.");
+    }
     const res = await axios.post("/api/auth/register", data);
-    console.log(res);
+    // console.log(res);
+
     if (res.status === 201) {
       const result = await signIn("credentials", {
         email: res.data.email,
@@ -87,8 +91,8 @@ function SignupForm() {
               message: "El Username es requerido.",
             },
             maxLength: {
-              value: 10,
-              message: "Longitud maxima 10 caracteres.",
+              value: 30,
+              message: "Longitud maxima 30 caracteres.",
             },
           })}
         />
