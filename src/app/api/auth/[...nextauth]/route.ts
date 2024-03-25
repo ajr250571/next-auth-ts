@@ -25,7 +25,7 @@ const handler = NextAuth({
         const user = await prisma.user.findUnique({
           where: { email },
         });
-        console.log(user);
+        // console.log(user);
         if (!user) throw new Error("Invalid credentials");
         const validPassword = await bcrypt.compare(password, user.password);
         if (!validPassword) throw new Error("Invalid credentials");

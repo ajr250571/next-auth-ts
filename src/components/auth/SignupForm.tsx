@@ -1,5 +1,7 @@
 "use client";
 import axios from "axios";
+import { signIn } from "next-auth/react";
+import { useRouter } from "next/navigation";
 import { useForm, SubmitHandler } from "react-hook-form";
 
 type Inputs = {
@@ -10,6 +12,7 @@ type Inputs = {
 };
 
 function SignupForm() {
+  const router = useRouter();
   const {
     register,
     handleSubmit,
@@ -20,6 +23,18 @@ function SignupForm() {
     console.log(data);
     const res = await axios.post("/api/auth/register", data);
     console.log(res);
+    if (res.status === 201) {
+      const result = await signIn("credentials", {
+        email: res.data.email,
+        password: data.password,
+        redirect: false,
+      });
+      if (!result?.ok) {
+        console.log(result?.error);
+        return;
+      }
+      router.push("/dashboard");
+    }
   };
 
   return (
@@ -67,6 +82,10 @@ function SignupForm() {
             required: {
               value: true,
               message: "El Username es requerido.",
+            },
+            maxLength: {
+              value: 10,
+              message: "Longitud maxima 10 caracteres.",
             },
           })}
         />
