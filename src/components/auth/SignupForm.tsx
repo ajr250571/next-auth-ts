@@ -38,8 +38,11 @@ function SignupForm() {
   };
 
   return (
-    <form onSubmit={handleSubmit(onSubmit)} className="flex flex-col w-80">
-      <label className="input input-bordered input-sm flex items-center gap-2 mt-2">
+    <form
+      onSubmit={handleSubmit(onSubmit)}
+      className="flex flex-col gap-y-4 w-80"
+    >
+      <label className="input input-bordered input-sm flex items-center gap-2">
         <svg
           xmlns="http://www.w3.org/2000/svg"
           viewBox="0 0 16 16"
@@ -65,7 +68,7 @@ function SignupForm() {
       {errors.email && (
         <span className="text-error text-xs mt-2">{errors.email.message}</span>
       )}
-      <label className="input input-bordered input-sm flex items-center gap-2 mt-2">
+      <label className="input input-bordered input-sm flex items-center gap-2">
         <svg
           xmlns="http://www.w3.org/2000/svg"
           viewBox="0 0 16 16"
@@ -95,7 +98,7 @@ function SignupForm() {
           {errors.username.message}
         </span>
       )}
-      <label className="input input-bordered input-sm flex items-center gap-2 mt-2">
+      <label className="input input-bordered input-sm flex items-center gap-2">
         <svg
           xmlns="http://www.w3.org/2000/svg"
           viewBox="0 0 16 16"
@@ -125,7 +128,7 @@ function SignupForm() {
           {errors.password.message}
         </span>
       )}
-      <label className="input input-bordered input-sm flex items-center gap-2 mt-2">
+      <label className="input input-bordered input-sm flex items-center gap-2">
         <svg
           xmlns="http://www.w3.org/2000/svg"
           viewBox="0 0 16 16"
@@ -155,7 +158,7 @@ function SignupForm() {
           {errors.confirmPassword.message}
         </span>
       )}
-      <button type="submit" className="btn btn-primary mt-4 btn-sm">
+      <button type="submit" className="btn btn-primary btn-sm">
         Registrarse
       </button>
     </form>

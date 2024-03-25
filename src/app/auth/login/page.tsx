@@ -6,7 +6,7 @@ function LoginPage() {
     <div className="flex items-center justify-center">
       <div className="card h-auto w-auto bg-base-200 shadow-xl items-center mt-10">
         <div className="card-body">
-          <h2 className="card-title">Iniciar Sesión</h2>
+          <h2 className="card-title mb-4">Iniciar Sesión</h2>
           <SigninForm />
           <div className="flex justify-between">
             <p className="text-sm">No tienes Cuenta?</p>

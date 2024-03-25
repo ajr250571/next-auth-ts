@@ -6,7 +6,7 @@ function RegisterPage() {
     <div className="flex items-center justify-center">
       <div className="card h-auto w-auto bg-base-200 shadow-xl items-center mt-10">
         <div className="card-body">
-          <h2 className="card-title">Registrarse</h2>
+          <h2 className="card-title mb-4">Registrarse</h2>
           <SignupForm />
           <div className="flex justify-between">
             <p className="text-sm">Ya tienes Cuenta?</p>
