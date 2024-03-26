@@ -6,9 +6,11 @@ function Navbar() {
   const { data: session } = useSession();
   // console.log(session);
   return (
-    <div className="navbar bg-base-100">
+    <div className="navbar bg-base-100 border-b-2 mb-2">
       <div className="flex-1">
-        <a className="btn btn-ghost text-xl">Auth</a>
+        <Link href="/" className="btn btn-ghost text-xl">
+          PPK
+        </Link>
       </div>
       <div className="flex-none">
         <ul className="menu menu-horizontal px-1">
@@ -26,12 +28,14 @@ function Navbar() {
           {session && (
             <>
               <li>
-                <Link href="/dashboard">Dashboard</Link>
+                <Link href="/dashboard">Tasks</Link>
               </li>
               <li>
                 <details>
-                  <summary>{session?.user?.name}</summary>
-                  <ul className="p-2 bg-base-100 rounded-t-none">
+                  <summary className="bg-primary rounded-br-3xl">
+                    {session?.user?.name}
+                  </summary>
+                  <ul className="p-2 bg-primary rounded-t-none">
                     <li>
                       <a>Profile</a>
                     </li>
@@ -39,7 +43,12 @@ function Navbar() {
                       <a>Settings</a>
                     </li>
                     <li>
-                      <a onClick={() => signOut()}>Logout</a>
+                      <a
+                        className="text-error font-bold"
+                        onClick={() => signOut()}
+                      >
+                        Logout
+                      </a>
                     </li>
                   </ul>
                 </details>
