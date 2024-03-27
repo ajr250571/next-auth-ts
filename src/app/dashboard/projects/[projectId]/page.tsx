@@ -1,5 +1,3 @@
-function ProjectDetail() {
-  return <div>ProjectDetail</div>;
-}
+import newPage from "../new/page";
 
-export default ProjectDetail;
+export default newPage;
