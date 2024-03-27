@@ -28,7 +28,7 @@ function Navbar() {
           {session && (
             <>
               <li>
-                <Link href="/dashboard">Tasks</Link>
+                <Link href="/dashboard">Projects</Link>
               </li>
               <li>
                 <details>
@@ -36,12 +36,6 @@ function Navbar() {
                     {session?.user?.name}
                   </summary>
                   <ul className="p-2 bg-primary rounded-t-none">
-                    <li>
-                      <a>Profile</a>
-                    </li>
-                    <li>
-                      <a>Settings</a>
-                    </li>
                     <li>
                       <a
                         className="text-error font-bold"

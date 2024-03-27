@@ -10,8 +10,6 @@ export async function POST(request: Request) {
     return NextResponse.json({ message: "No autorizado" }, { status: 401 });
   }
 
-  console.log(session);
-  console.log(data);
   const newProject = await prisma.project.create({
     data: {
       title: data.title,

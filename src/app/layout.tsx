@@ -7,7 +7,7 @@ import GlobalContext from "@/context/GlobalContext";
 const inter = Inter({ subsets: ["latin"] });
 
 export const metadata: Metadata = {
-  title: "NextAuth-TS",
+  title: "Panpack SA",
   description: "App NextAuth con TS",
 };
 

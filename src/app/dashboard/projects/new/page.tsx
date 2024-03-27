@@ -1,6 +1,7 @@
 "use client";
 
 import axios from "axios";
+import { useRouter } from "next/navigation";
 import { useForm, SubmitHandler } from "react-hook-form";
 
 type Inputs = {
@@ -9,6 +10,7 @@ type Inputs = {
 };
 
 function TaskNewPage() {
+  const router = useRouter();
   const {
     register,
     handleSubmit,
@@ -16,9 +18,13 @@ function TaskNewPage() {
     formState: { errors },
   } = useForm<Inputs>();
   const onSubmit: SubmitHandler<Inputs> = async (data) => {
-    console.log(data);
+    // console.log(data);
     const res = await axios.post("/api/projects", data);
-    console.log(res);
+    // console.log(res);
+    if (res.status === 201) {
+      router.push("/dashboard");
+      router.refresh();
+    }
   };
   return (
     <div className="flex h-[calc(100vh-5rem)] items-center justify-center">
