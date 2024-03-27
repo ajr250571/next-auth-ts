@@ -1,5 +1,15 @@
 https://www.youtube.com/watch?v=qOAUm_rAE-E&t=2335s
-1:56 Task Project
+2:22 Session
+
+## .env
+
+NEXTAUTH_URL=http://localhost:3000
+NEXTAUTH_SECRET="5/IFQsBlMyvdiZ+BSIOZb8YEWN73FtvbXRfDep10gyk="
+DATABASE_URL='file:./dev.db'
+
+## Genera db
+
+npx prisma migrate dev --name init
 
 This is a [Next.js](https://nextjs.org/) project bootstrapped with [`create-next-app`](https://github.com/vercel/next.js/tree/canary/packages/create-next-app).
 

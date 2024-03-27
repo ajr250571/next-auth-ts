@@ -1,5 +1,6 @@
 "use client";
 
+import axios from "axios";
 import { useForm, SubmitHandler } from "react-hook-form";
 
 type Inputs = {
@@ -16,6 +17,8 @@ function TaskNewPage() {
   } = useForm<Inputs>();
   const onSubmit: SubmitHandler<Inputs> = async (data) => {
     console.log(data);
+    const res = await axios.post("/api/projects", data);
+    console.log(res);
   };
   return (
     <div className="flex h-[calc(100vh-5rem)] items-center justify-center">
